@@ -1,5 +1,5 @@
 # SpotifyStats
-Montre des statistiques avec les données téléchargés de spotify
+Montre des statistiques avec les données téléchargés de spotify.
 
 Pour l'utilisé télécharger vos données spotify et vous pouvez extraire le fichier MyData avec les fichiers dedans et le mettre à la racine du projet.
 
