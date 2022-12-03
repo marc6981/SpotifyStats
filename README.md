@@ -1,9 +1,18 @@
 # SpotifyStats
-Montre des statistiques avec les données téléchargés de spotify
 
-Pour l'utilisé télécharger vos données spotify et vous pouvez extraire le fichier MyData avec les fichiers dedans et le mettre à la racine du projet.
+SpotifyStats is a simple Python script that uses the Spotify data export to generate some statistics about your listening habits.
 
-Exemple de statistique:
+## Usage
+
+1. Download your Spotify data from [here](https://www.spotify.com/us/account/privacy/).
+2. Extract the archive and place the folder MyData in ./data/
+
+* If you have multiple data archives, you can place them in the same folder with numbers appended to the folder name, e.g. MyData1, MyData2, etc.
+* If you want to specify a date range you can set the `start_date` and `end_date` variables in `main.py` to the desired dates.
+
+Note: The Spotify wrapper use a date range from January 1st to October 31st, 2017.
+
+Exemple of stats:
 ```
 Donnée du 2020-09-25 au 2021-09-26
 Pour l'année 2020 tu as écouté 42992.64 minutes ou 716.54 heures

@@ -2,6 +2,17 @@ from os import walk
 import json
 import datetime
 
+# Path to folder containing the spotify data
+DATA_FOLDER_PATH = "data/MyData3"
+
+# If you want to use a range of dates you can set the start and end date
+# Otherwise set them to None
+START_DATE = datetime.date(2022, 1, 1)
+END_DATE = datetime.date(2022, 10, 31)
+
+# START_DATE = None
+# END_DATE = None
+
 
 class track:
     def __init__(self, data):
@@ -19,13 +30,11 @@ class track:
 
 
 def openJsonFile():
-    myPath = "MyData"
-
     data = []
-    for (dirpath, dirnames, filenames) in walk(myPath):
+    for (dirpath, dirnames, filenames) in walk(DATA_FOLDER_PATH):
         for f in filenames:
             if f.startswith("StreamingHistory"):
-                with open(myPath + "/" + f, "r", encoding="mbcs") as dataFile:
+                with open(DATA_FOLDER_PATH + "/" + f, "r", encoding="mbcs") as dataFile:
                     dataJson = json.load(dataFile)
                     data += dataJson
 
@@ -39,6 +48,10 @@ def calcul(data):
     date = []
     for x in data:
         t = track(x)
+
+        if START_DATE is not None and t.date < START_DATE or END_DATE is not None and t.date > END_DATE:
+            continue
+
         date.append(t.date)
         #print(res[t.getYear()])
 
@@ -57,6 +70,10 @@ def calcul(data):
         else:
             resTime[t.getYear()] = t.msPlayed
 
+    # Error handling
+    if len(date) == 0:
+        print("No data found")
+        return
     afficher(min(date), max(date), resTime, resArtist, resTrack)
 
 
